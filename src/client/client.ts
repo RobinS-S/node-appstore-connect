@@ -251,7 +251,7 @@ export class Client implements BuildClientInterface, ReleaseClientInterface, Tes
      * @param {NotifyBetaTestersOptions?} options
      */
     public notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: NotifyBetaTestersOptions): Promise<void> {
-        return this.testflightClient.notifyBetaTestersOfNewBuildByBuildId(buildId);
+        return this.testflightClient.notifyBetaTestersOfNewBuildByBuildId(buildId, options);
     }
 
     /**
