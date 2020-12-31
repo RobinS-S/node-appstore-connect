@@ -18,6 +18,8 @@ import { PlatformType } from "../client";
 import { SubmitForReviewOptions } from "./submit-for-review-options";
 import { CreateVersionOptions } from "./create-version-options";
 import { EnsureVersionOptions } from "./ensure-version-options";
+import { LocalizationInterface } from "./localization.interface";
+import { ReviewDetailsInterface } from "./review-details.interface";
 export interface ReleaseClientInterface {
     ensureVersionExists(appId: number, version: string, platform: PlatformType, options?: EnsureVersionOptions): Promise<void>;
     createVersion(appId: number, version: string, platform: PlatformType, options?: CreateVersionOptions): Promise<void>;
@@ -26,4 +28,6 @@ export interface ReleaseClientInterface {
     submitForReview(appId: number, version: string, platform: PlatformType, options?: SubmitForReviewOptions): Promise<void>;
     submitForReviewByVersionId(versionId: string, options?: SubmitForReviewOptions): Promise<void>;
     getVersionId(appId: number, version: string, platform: PlatformType): Promise<string>;
+    setVersionLocalizationsByVersionId(versionId: string, localizations: LocalizationInterface[]): Promise<void>;
+    setVersionReviewDetailAttributesByVersionId(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
 }

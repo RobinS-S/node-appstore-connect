@@ -20,6 +20,8 @@ import { PlatformType } from "../client";
 import { ReleaseClientInterface } from "./release-client.interface";
 import { CreateVersionOptions } from "./create-version-options";
 import { EnsureVersionOptions } from "./ensure-version-options";
+import { LocalizationInterface } from "./localization.interface";
+import { ReviewDetailsInterface } from "./review-details.interface";
 export declare class ReleaseClient implements ReleaseClientInterface {
     private readonly tokenProvider;
     /**
@@ -37,6 +39,7 @@ export declare class ReleaseClient implements ReleaseClientInterface {
      * @return {Promise<void>}
      */
     ensureVersionExists(appId: number, version: string, platform: PlatformType, options?: EnsureVersionOptions): Promise<void>;
+    private _updateVersionReleaseType;
     private _updateVersionCode;
     /**
      * Creates a new version for sale
@@ -89,4 +92,17 @@ export declare class ReleaseClient implements ReleaseClientInterface {
      * @param {SubmitForReviewOptions?} options
      */
     submitForReviewByVersionId(versionId: string, options?: SubmitForReviewOptions): Promise<void>;
+    private _setReleaseNotesByVersionId;
+    setVersionLocalizationsByVersionId(versionId: string, localizations: LocalizationInterface[]): Promise<void>;
+    private _createVersionLocalization;
+    private _updateVersionLocalization;
+    /**
+     * Sets version review details
+     *
+     * @param {string} versionId
+     * @param {ReviewDetailsInterface?} reviewDetails
+     */
+    setVersionReviewDetailAttributesByVersionId(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
+    _createVersionReviewDetail(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
+    _updateVersionReviewDetail(reviewDetailsId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
 }

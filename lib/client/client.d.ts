@@ -21,7 +21,7 @@ import { BuildClient } from "../build/build-client";
 import { ReleaseClient } from "../release/release-client";
 import { TestflightClient } from "../testflight/testflight-client";
 import { BuildClientInterface } from "../build/build-client.interface";
-import { CreateVersionOptions, EnsureVersionOptions, PlatformType, SubmitForReviewOptions } from "../release";
+import { CreateVersionOptions, EnsureVersionOptions, PlatformType, SubmitForReviewOptions, LocalizationInterface, ReviewDetailsInterface } from "../release";
 import { WaitForBuildProcessingOptions } from "../build";
 import { ReleaseClientInterface } from "../release/release-client.interface";
 import { AddBuildToExternalGroupOptions } from "../testflight";
@@ -177,4 +177,18 @@ export declare class Client implements BuildClientInterface, ReleaseClientInterf
      * @param {string} buildId
      */
     notifyBetaTestersOfNewBuildByBuildId(buildId: string): Promise<void>;
+    /**
+     * Creates or updates localizations by version id
+     *
+     * @param {string} versionId
+     * @param {LocalizationInterface[]} localizations
+     */
+    setVersionLocalizationsByVersionId(versionId: string, localizations: LocalizationInterface[]): Promise<void>;
+    /**
+     * Sets version review details
+     *
+     * @param {string} versionId
+     * @param {ReviewDetailsInterface?} reviewDetails
+     */
+    setVersionReviewDetailAttributesByVersionId(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
 }

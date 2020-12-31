@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-export * from '../client/platform-type';
-export * from './submit-for-review-options';
-export * from './create-version-options';
-export * from './ensure-version-options';
-export * from './review-details.interface';
-export * from './localization.interface';
-export * from './localization-attributes.interface';
+import { LocalizationAttributesInterface } from "./localization-attributes.interface";
+export interface LocalizationInterface {
+    lang: string;
+    attributes: LocalizationAttributesInterface;
+}

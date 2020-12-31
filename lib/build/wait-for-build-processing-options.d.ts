@@ -19,4 +19,5 @@ export interface WaitForBuildProcessingOptions {
     pollIntervalInSeconds?: number;
     maxTries?: number;
     onPollCallback?: (state: BuildProcessingState, tries: number) => void;
+    initialDelayInSeconds?: number;
 }
