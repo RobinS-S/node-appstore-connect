@@ -19,6 +19,7 @@ import { TestflightClientInterface } from "./testflight-client.interface";
 import { AddBuildToExternalGroupOptions } from "./add-build-to-external-group-options";
 import { PlatformType } from "../client";
 import { BuildClient } from "../build/build-client";
+import { NotifyBetaTestersOptions } from "./notify-beta-testers-options";
 export declare class TestflightClient implements TestflightClientInterface {
     private readonly tokenProvider;
     private readonly buildClient;
@@ -50,6 +51,8 @@ export declare class TestflightClient implements TestflightClientInterface {
      * Notifies beta testers there is a new build
      *
      * @param {string} buildId
+     * @param {NotifyBetaTestersOptions?} options
+     *
      */
-    notifyBetaTestersOfNewBuildByBuildId(buildId: string): Promise<void>;
+    notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: NotifyBetaTestersOptions): Promise<void>;
 }

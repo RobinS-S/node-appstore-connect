@@ -15,3 +15,4 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 export * from './add-build-to-external-group-options';
+export * from './notify-beta-testers-options';
