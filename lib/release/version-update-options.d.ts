@@ -14,18 +14,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-export interface CreateVersionOptions {
-    /**
-     * Will auto release once approved
-     */
-    autoRelease?: boolean;
-    /**
-     * The copyright owner of the application
-     */
-    copyright: string;
-    /**
-     * Whether or not to use an Identity for Advertisers
-     * @see https://www.appsflyer.com/mobile-attribution-glossary/idfa/
-     */
+import { ReleaseType } from "./release-type";
+export interface VersionUpdateOptions {
+    copyright?: string;
+    earliestReleaseDate?: string;
+    releaseType?: ReleaseType;
     usesIdfa?: boolean;
+    versionString?: string;
+    downloadable?: boolean;
 }

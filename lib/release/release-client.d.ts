@@ -22,6 +22,7 @@ import { CreateVersionOptions } from "./create-version-options";
 import { EnsureVersionOptions } from "./ensure-version-options";
 import { LocalizationInterface } from "./localization.interface";
 import { ReviewDetailsInterface } from "./review-details.interface";
+import { VersionUpdateOptions } from "./version-update-options";
 export declare class ReleaseClient implements ReleaseClientInterface {
     private readonly tokenProvider;
     /**
@@ -93,6 +94,12 @@ export declare class ReleaseClient implements ReleaseClientInterface {
      */
     submitForReviewByVersionId(versionId: string, options?: SubmitForReviewOptions): Promise<void>;
     private _setReleaseNotesByVersionId;
+    /**
+     * Creates or updates version localizations
+     *
+     * @param {string} versionId
+     * @param {LocalizationInterface[]} localizations
+     */
     setVersionLocalizationsByVersionId(versionId: string, localizations: LocalizationInterface[]): Promise<void>;
     private _createVersionLocalization;
     private _updateVersionLocalization;
@@ -105,4 +112,11 @@ export declare class ReleaseClient implements ReleaseClientInterface {
     setVersionReviewDetailAttributesByVersionId(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
     _createVersionReviewDetail(versionId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
     _updateVersionReviewDetail(reviewDetailsId: string, reviewDetails: ReviewDetailsInterface): Promise<void>;
+    /**
+     * Updates a version
+     *
+     * @param {string} versionId
+     * @param {VersionUpdateOptions} attributes
+     */
+    updateVersionByVersionId(versionId: string, attributes: VersionUpdateOptions): Promise<void>;
 }

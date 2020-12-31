@@ -17,6 +17,7 @@
 import { ReviewDetailsInterface } from "./review-details.interface";
 import { ReleaseNotesInterface } from "./release-notes.interface";
 import { LocalizationInterface } from "./localization.interface";
+import { VersionUpdateOptions } from "./version-update-options";
 export interface SubmitForReviewOptions {
     /**
      * Whether or not to auto create an app store version in case it does not already exist
@@ -24,7 +25,7 @@ export interface SubmitForReviewOptions {
      */
     autoCreateVersion?: boolean;
     /**
-     * Whether or not to update the auto release to true. Scheduling is not currently supported via this sdk
+     * Whether or not to update the auto release after approval
      */
     autoreleaseOnApproval?: boolean;
     /**
@@ -39,5 +40,12 @@ export interface SubmitForReviewOptions {
      * Review details for the version
      */
     reviewDetailAttributes?: ReviewDetailsInterface;
+    /**
+     * Attributes of a version that can be updated
+     */
+    versionAttributes?: VersionUpdateOptions;
+    /**
+     * Localized attributes for a version
+     */
     localizations?: LocalizationInterface[];
 }
