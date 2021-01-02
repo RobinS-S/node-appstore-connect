@@ -16,10 +16,11 @@
  */
 import { TokenProvider } from "../client/token-provider";
 import { TestflightClientInterface } from "./testflight-client.interface";
-import { AddBuildToExternalGroupOptions } from "./add-build-to-external-group-options";
+import { TestflightAddBuildToExternalGroupOptions } from "./testflight-add-build-to-external-group-options";
 import { PlatformType } from "../client";
 import { BuildClient } from "../build/build-client";
-import { NotifyBetaTestersOptions } from "./notify-beta-testers-options";
+import { TestflightNotifyBetaTestersOptions } from "./testflight-notify-beta-testers-options";
+import { TestflightCreateGroupOptions } from "./testflight-create-group-options";
 export declare class TestflightClient implements TestflightClientInterface {
     private readonly tokenProvider;
     private readonly buildClient;
@@ -36,23 +37,52 @@ export declare class TestflightClient implements TestflightClientInterface {
      * @param {PlatformType} platform
      * @param {number} buildNumber
      * @param {string} groupId
-     * @param {AddBuildToExternalGroupOptions?} options
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
      */
-    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number, groupId: string, options?: AddBuildToExternalGroupOptions): Promise<void>;
+    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
+    /**
+     * Adds build to group by group name
+     *
+     * @param {number} appId
+     * @param {string} buildId
+     * @param {string} groupName
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
+     */
+    addBuildToExternalGroupByBuildId(appId: number, buildId: string, groupName: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
     /**
      * Adds build to external test flight user group. App must be already approved for beta testing perform this function.
      *
      * @param {string} buildId
      * @param {string} groupId
-     * @param {AddBuildToExternalGroupOptions?} options
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
      */
-    addBuildToExternalGroupByGroupIdAndBuildId(buildId: string, groupId: string, options?: AddBuildToExternalGroupOptions): Promise<void>;
+    addBuildToExternalGroupByGroupIdAndBuildId(buildId: string, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
     /**
      * Notifies beta testers there is a new build
      *
      * @param {string} buildId
-     * @param {NotifyBetaTestersOptions?} options
+     * @param {TestflightNotifyBetaTestersOptions?} options
      *
      */
-    notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: NotifyBetaTestersOptions): Promise<void>;
+    notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: TestflightNotifyBetaTestersOptions): Promise<void>;
+    /**
+     * Creates an external group
+     *
+     * @param {number} appId
+     * @param {string} groupName
+     * @param {TestflightCreateGroupOptions?} options
+     *
+     * @returns Promise<string> A promise with the group id
+     */
+    createExternalBetaTestersGroup(appId: number, groupName: string, options?: TestflightCreateGroupOptions): Promise<string>;
+    /**
+     * Gets an external beta testing group ID by app ID and group name
+     *
+     * @param {number} appId
+     * @param {string} groupName
+     *
+     * @throws {ApiError | Error}
+     * @returns Promise<string> A promise with the group id
+     */
+    getExternalBetaTestersGroupId(appId: number, groupName: string): Promise<string>;
 }

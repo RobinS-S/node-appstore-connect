@@ -14,8 +14,11 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import { NotifyBetaTestersOptions } from "./notify-beta-testers-options";
-export interface AddBuildToExternalGroupOptions {
-    notifyBetaTestersThereIsANewBuild?: boolean;
-    notifyOptions?: NotifyBetaTestersOptions;
+export interface TestflightNotifyBetaTestersOptions {
+    /**
+     * Ignores errors if notification is already enabled
+     *
+     * @default {false}
+     */
+    ignoreIfEnabled?: boolean;
 }

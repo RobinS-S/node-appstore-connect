@@ -24,7 +24,7 @@ import { BuildClientInterface } from "../build/build-client.interface";
 import { CreateVersionOptions, EnsureVersionOptions, LocalizationInterface, ReviewDetailsInterface, SubmitForReviewOptions } from "../release";
 import { WaitForBuildProcessingOptions } from "../build";
 import { ReleaseClientInterface } from "../release/release-client.interface";
-import { AddBuildToExternalGroupOptions, NotifyBetaTestersOptions } from "../testflight";
+import { TestflightAddBuildToExternalGroupOptions, TestflightCreateGroupOptions, TestflightNotifyBetaTestersOptions } from "../testflight";
 import { TestflightClientInterface } from "../testflight/testflight-client.interface";
 import { VersionUpdateOptions } from "../release";
 import { PlatformType } from "./platform-type";
@@ -167,24 +167,33 @@ export declare class Client implements BuildClientInterface, ReleaseClientInterf
      * @param {PlatformType} platform
      * @param {number} buildNumber
      * @param {string} groupId
-     * @param {AddBuildToExternalGroupOptions?} options
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
      */
-    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number, groupId: string, options?: AddBuildToExternalGroupOptions): Promise<void>;
+    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
     /**
      * Adds build to external test flight user group. App must be already approved for beta testing perform this function.
      *
      * @param {string} buildId
      * @param {string} groupId
-     * @param {AddBuildToExternalGroupOptions?} options
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
      */
-    addBuildToExternalGroupByGroupIdAndBuildId(buildId: string, groupId: string, options?: AddBuildToExternalGroupOptions): Promise<void>;
+    addBuildToExternalGroupByGroupIdAndBuildId(buildId: string, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
+    /**
+     * Adds build to group by group name
+     *
+     * @param {number} appId
+     * @param {string} buildId
+     * @param {string} groupName
+     * @param {TestflightAddBuildToExternalGroupOptions?} options
+     */
+    addBuildToExternalGroupByBuildId(appId: number, buildId: string, groupName: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
     /**
      * Notifies beta testers there is a new build
      *
      * @param {string} buildId
-     * @param {NotifyBetaTestersOptions?} options
+     * @param {TestflightNotifyBetaTestersOptions?} options
      */
-    notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: NotifyBetaTestersOptions): Promise<void>;
+    notifyBetaTestersOfNewBuildByBuildId(buildId: string, options?: TestflightNotifyBetaTestersOptions): Promise<void>;
     /**
      * Creates or updates localizations by version id
      *
@@ -206,4 +215,23 @@ export declare class Client implements BuildClientInterface, ReleaseClientInterf
      * @param {VersionUpdateOptions} attributes
      */
     updateVersionByVersionId(versionId: string, attributes: VersionUpdateOptions): Promise<void>;
+    /**
+     * Creates an external beta testing group
+     *
+     * @param {number} appId
+     * @param {string} groupName
+     * @param {TestflightCreateGroupOptions?} options
+     *
+     * @returns Promise<string> A promise with the group id
+     */
+    createExternalBetaTestersGroup(appId: number, groupName: string, options?: TestflightCreateGroupOptions): Promise<string>;
+    /**
+     * Gets an external beta testing group ID by app ID and group name
+     *
+     * @param {number} appId
+     * @param {string} groupName
+     *
+     * @returns Promise<string> A promise with the group id
+     */
+    getExternalBetaTestersGroupId(appId: number, groupName: string): Promise<string>;
 }

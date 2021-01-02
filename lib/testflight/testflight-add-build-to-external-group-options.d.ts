@@ -1,4 +1,3 @@
-"use strict";
 /**
  * This file is part of the node-appstore-connect distribution.
  * Copyright (c) e.GO Digital GmbH, Aachen, Germany (https://www.e-go-digital.com/)
@@ -15,5 +14,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-//# sourceMappingURL=notify-beta-testers-options.js.map
+import { TestflightNotifyBetaTestersOptions } from "./testflight-notify-beta-testers-options";
+export interface TestflightAddBuildToExternalGroupOptions {
+    notifyBetaTestersThereIsANewBuild?: boolean;
+    notifyOptions?: TestflightNotifyBetaTestersOptions;
+    /**
+     * @default {true}
+     */
+    createGroupIfNotExists?: boolean;
+}
