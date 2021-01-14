@@ -19,6 +19,7 @@ import { BuildStatus } from "./build-status";
 import { BuildClientInterface } from "./build-client.interface";
 import { WaitForBuildProcessingOptions } from "./wait-for-build-processing-options";
 import { PlatformType } from "../client";
+import { BuildUpdateOptions } from "./build-update-options";
 export declare class BuildClient implements BuildClientInterface {
     private readonly tokenProvider;
     /**
@@ -64,4 +65,11 @@ export declare class BuildClient implements BuildClientInterface {
      * @return {Promise<void>}
      */
     waitForBuildProcessingToComplete(appId: number, platform: PlatformType, version: string, buildNumber: number, options?: WaitForBuildProcessingOptions): Promise<void>;
+    /**
+     * Updates a build
+     *
+     * @param {string} buildId
+     * @param {BuildUpdateOptions} options
+     */
+    updateBuild(buildId: string, options: BuildUpdateOptions): Promise<void>;
 }

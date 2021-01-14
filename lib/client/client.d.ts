@@ -22,7 +22,7 @@ import { ReleaseClient } from "../release/release-client";
 import { TestflightClient } from "../testflight/testflight-client";
 import { BuildClientInterface } from "../build/build-client.interface";
 import { CreateVersionOptions, EnsureVersionOptions, LocalizationInterface, ReviewDetailsInterface, SubmitForReviewOptions } from "../release";
-import { WaitForBuildProcessingOptions } from "../build";
+import { BuildUpdateOptions, WaitForBuildProcessingOptions } from "../build";
 import { ReleaseClientInterface } from "../release/release-client.interface";
 import { TestflightAddBuildToExternalGroupOptions, TestflightCreateGroupOptions, TestflightNotifyBetaTestersOptions } from "../testflight";
 import { TestflightClientInterface } from "../testflight/testflight-client.interface";
@@ -234,4 +234,11 @@ export declare class Client implements BuildClientInterface, ReleaseClientInterf
      * @returns Promise<string> A promise with the group id
      */
     getExternalBetaTestersGroupId(appId: number, groupName: string): Promise<string>;
+    /**
+     * Updates a build
+     *
+     * @param {string} buildId
+     * @param {BuildUpdateOptions} options
+     */
+    updateBuild(buildId: string, options: BuildUpdateOptions): Promise<void>;
 }
