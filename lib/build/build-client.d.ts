@@ -35,7 +35,7 @@ export declare class BuildClient implements BuildClientInterface {
      * @param {PlatformType} platform
      * @param {string} buildNumber
      */
-    getBuildId(appId: number, version: string, platform: PlatformType, buildNumber?: number): Promise<string>;
+    getBuildId(appId: number, version: string, platform: PlatformType, buildNumber?: number | string): Promise<string>;
     /**
      * Gets status for a build
      *
@@ -52,7 +52,7 @@ export declare class BuildClient implements BuildClientInterface {
      * @param {PlatformType} platform
      * @param {string} buildNumber
      */
-    getBuildStatus(appId: number, version: string, platform: PlatformType, buildNumber?: number): Promise<BuildStatus>;
+    getBuildStatus(appId: number, version: string, platform: PlatformType, buildNumber?: number | string): Promise<BuildStatus>;
     /**
      * Waits for build processing to complete. Throws error if build is invalid. Waits indefinitely if build does not exist.
      *
@@ -65,7 +65,7 @@ export declare class BuildClient implements BuildClientInterface {
      *
      * @return {Promise<void>}
      */
-    waitForBuildProcessingToComplete(appId: number, platform: PlatformType, version: string, buildNumber: number, options?: WaitForBuildProcessingOptions): Promise<void>;
+    waitForBuildProcessingToComplete(appId: number, platform: PlatformType, version: string, buildNumber: number | string, options?: WaitForBuildProcessingOptions): Promise<void>;
     /**
      * Updates a build
      *

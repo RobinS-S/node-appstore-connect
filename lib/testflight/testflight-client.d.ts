@@ -39,7 +39,7 @@ export declare class TestflightClient implements TestflightClientInterface {
      * @param {string} groupId
      * @param {TestflightAddBuildToExternalGroupOptions?} options
      */
-    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
+    addBuildToExternalGroupByGroupId(appId: number, version: string, platform: PlatformType, buildNumber: number | string, groupId: string, options?: TestflightAddBuildToExternalGroupOptions): Promise<void>;
     /**
      * Adds build to group by group name
      *
