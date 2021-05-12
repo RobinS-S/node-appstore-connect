@@ -3,7 +3,8 @@
 doc
 node_modules
 .gitignore
-src
+src/*.ts
+src/**/*.ts
 tsconfig.json
 tslint.json
 /.github

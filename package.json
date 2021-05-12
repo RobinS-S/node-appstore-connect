@@ -47,6 +47,7 @@
     "build": "(rimraf ./lib || true) && tsc && tsc -d",
     "deploy": "npm install && npm run build && npm publish",
     "doc": "(rimraf ./doc || true) && (typedoc --out ./doc ./src)",
-    "sandbox": "ts-node src/sandbox.ts"
+    "sandbox": "ts-node src/sandbox.ts",
+    "prepare": "npm run build"
   }
 }
