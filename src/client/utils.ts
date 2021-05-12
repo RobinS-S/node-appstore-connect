@@ -43,7 +43,7 @@ export function gunzip(input: zlib.InputType, encoding?: string): Promise<Buffer
                     } else {
                         resolve(
                             isNil(encoding) ?
-                                unzipped : unzipped.toString(encoding)
+                                unzipped : unzipped.toString(encoding as BufferEncoding)
                         );
                     }
                 } catch (e) {

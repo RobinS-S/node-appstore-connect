@@ -36,6 +36,7 @@ import {TestflightAddBuildToExternalGroupOptions, TestflightCreateGroupOptions, 
 import {TestflightClientInterface} from "../testflight/testflight-client.interface";
 import {VersionUpdateOptions} from "../release";
 import {PlatformType} from "./platform-type";
+import {GetInAppProductsOptions as GetInAppProductsOptions, GetInAppProductsResult as GetInAppProductsResult, InAppProductClient} from "../sales/iap-client";
 
 /**
  * A client for the App Store Connect API.
@@ -53,14 +54,16 @@ export class Client implements BuildClientInterface, ReleaseClientInterface, Tes
         const buildClient      = new BuildClient(tokenProvider);
         const releaseClient    = new ReleaseClient(tokenProvider);
         const testflightClient = new TestflightClient(tokenProvider, buildClient);
-        return new Client(salesClient, buildClient, releaseClient, testflightClient);
+        const iapClient = new InAppProductClient(tokenProvider);
+        return new Client(salesClient, buildClient, releaseClient, testflightClient, iapClient);
     }
 
     public constructor(
         private readonly salesClient: SalesClient,
         private readonly buildClient: BuildClient,
         private readonly releaseClient: ReleaseClient,
-        private readonly testflightClient: TestflightClient
+        private readonly testflightClient: TestflightClient,
+        private readonly iapClient: InAppProductClient
     ) {
     }
 
@@ -342,4 +345,14 @@ export class Client implements BuildClientInterface, ReleaseClientInterface, Tes
         return this.buildClient.getBuild(buildId);
     }
 
+    /**
+     * Gets all in app products
+     *
+     * @param {string} appId
+     *
+     * @returns {Promise<GetInAppProductsResult>}
+     */
+    public getInAppProducts(opts: GetInAppProductsOptions): Promise<GetInAppProductsResult> {
+        return this.iapClient.getInAppProducts(opts);
+    }
 }
