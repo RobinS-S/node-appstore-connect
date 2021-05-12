@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/egodigital/node-appstore-connect.git"
+    "url": "git+https://github.com/RobinS-S/node-appstore-connect.git"
   },
   "keywords": [
     "apple",
@@ -24,9 +24,9 @@
   ],
   "license": "LGPL-3.0",
   "bugs": {
-    "url": "https://github.com/egodigital/node-appstore-connect/issues"
+    "url": "https://github.com/RobinS-S/node-appstore-connect/issues"
   },
-  "homepage": "https://github.com/egodigital/node-appstore-connect#readme",
+  "homepage": "https://github.com/RobinS-S/node-appstore-connect#readme",
   "devDependencies": {
     "@egodigital/tsconfig": "^1.3.0",
     "rimraf": "^3.0.2",
