@@ -43,7 +43,7 @@ export class InAppProductClient {
             throw new Error(`Unexpected Response: [${RESPONSE.statusCode
                 }] '${RESPONSE.body}'`);
         }
-        return RESPONSE.body.toString('utf8') as unknown as GetInAppProductsResult;
+        return JSON.parse(RESPONSE.body.toString('utf8')) as GetInAppProductsResult;
     }
 }
 /**
